@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>首頁 · Insider Web SDK 測試站</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!--
+      Insider Tag：請將 Insider 後台提供的整合程式碼貼於此處（通常緊接在 <head> 開頭或依官方文件位置）。
+      驗證前請確認網站已接受 Cookie，且測試網址與帳號偏好設定的主要網域一致。
+    -->
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="index.html">Insider Web SDK 測試站</a>
+        <nav aria-label="主要導覽">
+          <a href="index.html" aria-current="page">首頁</a>
+          <a href="product.html">商品頁</a>
+          <a href="cart.html">購物車</a>
+          <a href="confirmation.html">完成頁</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <h1>首頁</h1>
+      <p>
+        此站為靜態頁面骨架，用於與 Insider Integration Wizard
+        對齊：頁面事件、使用者屬性、商品／購物車／完成頁等後續可逐步接上。
+      </p>
+      <div class="card">
+        <h2>頁面地圖</h2>
+        <ul class="meta">
+          <li><a href="product.html">商品頁</a> — Product page events</li>
+          <li><a href="cart.html">購物車</a> — Cart page events</li>
+          <li>
+            <a href="confirmation.html">訂單完成頁</a> — Confirmation page
+            events
+          </li>
+        </ul>
+      </div>
+      <div class="notice">
+        <strong>提醒：</strong>在後台「測試 Insider Tag
+        整合」前，請先在此專案各頁 <code>&lt;head&gt;</code> 內貼上 Insider
+        提供的標籤程式碼。
+      </div>
+    </main>
+    <footer class="site-footer">
+      <p>本機預覽：在專案根目錄執行靜態伺服器後開啟首頁即可。</p>
+    </footer>
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>

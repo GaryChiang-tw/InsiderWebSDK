@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>訂單完成 · Insider Web SDK 測試站</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- Insider Tag：貼上後台提供的整合程式碼。 -->
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="index.html">Insider Web SDK 測試站</a>
+        <nav aria-label="主要導覽">
+          <a href="index.html">首頁</a>
+          <a href="product.html">商品頁</a>
+          <a href="cart.html">購物車</a>
+          <a href="confirmation.html" aria-current="page">完成頁</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <h1>訂單完成</h1>
+      <p>
+        此頁預留給 Confirmation page events（訂單編號、總金額、購買商品列表等）。
+      </p>
+      <div class="card">
+        <h2>訂單摘要（示意）</h2>
+        <ul class="meta">
+          <li>訂單編號：<code>ORD-2026-DEMO-0001</code></li>
+          <li>總金額：<code>1290</code></li>
+          <li>狀態：已完成（測試資料）</li>
+        </ul>
+        <p style="margin-top: 1rem; margin-bottom: 0">
+          <a href="index.html">回到首頁</a>
+        </p>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <p>Confirmation page — 後續可對齊轉換／完成購買事件。</p>
+    </footer>
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>商品頁 · Insider Web SDK 測試站</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- Insider Tag：貼上後台提供的整合程式碼（與其他頁一致即可）。 -->
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="index.html">Insider Web SDK 測試站</a>
+        <nav aria-label="主要導覽">
+          <a href="index.html">首頁</a>
+          <a href="product.html" aria-current="page">商品頁</a>
+          <a href="cart.html">購物車</a>
+          <a href="confirmation.html">完成頁</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <h1>示範商品</h1>
+      <p>此頁預留給商品資訊與 Product page events（例如商品 ID、價格、分類）。</p>
+      <div class="card">
+        <h2>Demo 商品 A</h2>
+        <ul class="meta">
+          <li>商品 ID：<code>SKU-DEMO-001</code></li>
+          <li>價格：<code>1290</code>（測試用數值）</li>
+          <li>分類：線上課程（可依帳號產業調整）</li>
+        </ul>
+        <p style="margin-top: 1rem; margin-bottom: 0">
+          <a href="cart.html">前往購物車</a>
+        </p>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <p>Product page — 後續可在此頁或共用 JS 送出 Insider 所需事件。</p>
+    </footer>
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>
