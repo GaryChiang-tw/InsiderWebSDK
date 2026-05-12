@@ -25,6 +25,30 @@ body {
   background: var(--bg);
 }
 
+.wizard-banner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
+  background: #eff6ff;
+  border-bottom: 1px solid #bfdbfe;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.wizard-banner p {
+  margin: 0 0 0.5rem;
+  color: var(--text);
+}
+
+.wizard-banner p:last-child {
+  margin-bottom: 0;
+}
+
+.wizard-banner__meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
 a {
   color: var(--accent);
   text-decoration: none;

@@ -4,8 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="assets/js/insider-head.js"></script>
-    <!-- home + init 必須在 ins.js 開始處理前入佇列（勿移到 body 底部，否則 async 會搶跑） -->
+    <!-- home + init 必須在 ins.js 處理佇列前寫入；建議先 user 再 page（見 Academy Web SDK 整合順序） -->
     <script>
+      window.InsiderQueue.push({
+        type: "user",
+        value: {
+          uuid: "web-sdk-wizard-test-visitor",
+          language: "zh_TW",
+          gdpr_optin: true,
+        },
+      });
       window.InsiderQueue.push({
         type: "home",
       });
@@ -21,6 +29,38 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
+    <aside
+      class="wizard-banner"
+      id="wizard-test-banner"
+      hidden
+      aria-label="Insider 整合精靈測試模式"
+    >
+      <p>
+        <strong>Insider 測試連結已啟用。</strong>
+        此頁由精靈「Test Integration」開啟；請保留此分頁並依
+        <strong>Testing Modal</strong> 完成步驟，再回到精靈按
+        <strong>Update Test Results</strong>。若狀態未更新，請檢查是否阻擋第三方
+        Cookie／追蹤保護，並確認帳號允許的網域包含此 GitHub Pages 網址。
+      </p>
+      <p class="wizard-banner__meta">
+        <code>webSdkWizard</code> 表示精靈測試模式；
+        <code>insObjectName=homePage</code> 對應「首頁 Web SDK」檢查；
+        <code>queryHash</code> 為本次驗證用雜湊（由後台產生）。
+      </p>
+    </aside>
+    <script>
+      (function () {
+        try {
+          var q = new URLSearchParams(window.location.search);
+          if (q.has("webSdkWizard") || q.has("insObjectName")) {
+            document.addEventListener("DOMContentLoaded", function () {
+              var el = document.getElementById("wizard-test-banner");
+              if (el) el.hidden = false;
+            });
+          }
+        } catch (e) {}
+      })();
+    </script>
     <header class="site-header">
       <div class="site-header-inner">
         <a class="brand" href="index.html">Insider Web SDK 測試站</a>
