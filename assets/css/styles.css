@@ -156,3 +156,9 @@ th {
   font-size: 0.85rem;
   color: var(--muted);
 }
+
+.site-footer .site-version {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}

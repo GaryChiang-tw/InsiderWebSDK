@@ -3,6 +3,10 @@
 # 用法：
 #   ./git-push.sh
 #   ./git-push.sh "你的 commit 訊息"
+#   ./git-push.sh --bump              # 先遞增 patch 版號，再 commit／push（預設訊息含新版號）
+#   ./git-push.sh --bump "你的訊息"
+#
+# 僅更新版號、不推送：./bump-version.sh [major|minor|patch]
 #
 # 首次使用請先設定遠端（若尚未設定）：
 #   git remote add origin https://github.com/USER/REPO.git
@@ -30,7 +34,24 @@ if [[ -z "$BRANCH" ]]; then
   exit 1
 fi
 
-MSG="${1:-chore: update Insider Web SDK test site}"
+DO_BUMP=false
+if [[ "${1:-}" == "--bump" ]]; then
+  DO_BUMP=true
+  shift
+fi
+
+if [[ "$DO_BUMP" == true ]]; then
+  "$ROOT/bump-version.sh"
+  VER="$(tr -d ' \t\r\n' <"$ROOT/VERSION")"
+fi
+
+MSG="${1:-}"
+if [[ "$DO_BUMP" == true && -z "$MSG" ]]; then
+  MSG="chore: bump version to ${VER}"
+fi
+if [[ -z "$MSG" ]]; then
+  MSG="chore: update Insider Web SDK test site"
+fi
 
 git add -A
 
