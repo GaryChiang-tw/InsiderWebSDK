@@ -5,3 +5,9 @@
 .env
 .env.*
 !.env.example
+
+# 本機腳本不上傳（僅本機使用）
+git-push.sh
+bump-version.sh
+start.sh
+stop.sh

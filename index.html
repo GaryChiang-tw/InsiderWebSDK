@@ -45,11 +45,83 @@
         整合」前，請先在此專案各頁 <code>&lt;head&gt;</code> 內貼上 Insider
         提供的標籤程式碼。
       </div>
+
+      <section
+        class="card insider-diagnostics"
+        id="insider-diagnostics"
+        aria-labelledby="insider-diagnostics-heading"
+      >
+        <h2 id="insider-diagnostics-heading">Insider 整合偵測</h2>
+        <p class="insider-diagnostics__hint">
+          載入後自動更新（含非同步 <code>ins.js</code>）。預期
+          <code>insiderFlow</code> 與
+          <code>assets/js/insider-head.js</code> 一致。
+        </p>
+        <div class="insider-diagnostics__table" role="list">
+          <div class="insider-diagnostics__row" role="listitem">
+            <div class="insider-diagnostics__label">
+              <code>window.InsiderQueue</code>
+            </div>
+            <div>
+              <span
+                class="insider-diagnostics__pill insider-diagnostics__pill--muted"
+                data-diag="queue-status"
+                >檢查中…</span
+              >
+            </div>
+            <div class="insider-diagnostics__detail" data-diag="queue-detail">
+              —
+            </div>
+          </div>
+          <div class="insider-diagnostics__row" role="listitem">
+            <div class="insider-diagnostics__label">
+              <code>window.insiderFlow</code>
+            </div>
+            <div>
+              <span
+                class="insider-diagnostics__pill insider-diagnostics__pill--muted"
+                data-diag="flow-status"
+                >檢查中…</span
+              >
+            </div>
+            <div class="insider-diagnostics__detail" data-diag="flow-detail">
+              —
+            </div>
+          </div>
+          <div class="insider-diagnostics__row" role="listitem">
+            <div class="insider-diagnostics__label"><code>ins.js</code> 載入</div>
+            <div>
+              <span
+                class="insider-diagnostics__pill insider-diagnostics__pill--muted"
+                data-diag="script-status"
+                >檢查中…</span
+              >
+            </div>
+            <div class="insider-diagnostics__detail" data-diag="script-detail">
+              —
+            </div>
+          </div>
+          <div class="insider-diagnostics__row" role="listitem">
+            <div class="insider-diagnostics__label">Insider runtime</div>
+            <div>
+              <span
+                class="insider-diagnostics__pill insider-diagnostics__pill--muted"
+                data-diag="runtime-status"
+                >檢查中…</span
+              >
+            </div>
+            <div class="insider-diagnostics__detail" data-diag="runtime-detail">
+              —
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="site-footer">
       <p>本機預覽：在專案根目錄執行靜態伺服器後開啟首頁即可。</p>
       <p class="site-version">版本 <span class="js-version-display">—</span></p>
     </footer>
     <script src="assets/js/site.js" defer></script>
+    <script src="assets/js/insider-diagnostics.js" defer></script>
   </body>
 </html>

@@ -162,3 +162,82 @@ th {
   font-size: 0.8rem;
   color: var(--muted);
 }
+
+/* Insider 整合偵測區塊 */
+.insider-diagnostics {
+  margin-top: 1rem;
+}
+
+.insider-diagnostics__hint {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.insider-diagnostics__table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.insider-diagnostics__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.35fr);
+  gap: 0.65rem 0.75rem;
+  align-items: center;
+  padding: 0.65rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+@media (max-width: 640px) {
+  .insider-diagnostics__row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+.insider-diagnostics__label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.insider-diagnostics__pill {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.insider-diagnostics__pill--ok {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.insider-diagnostics__pill--warn {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.insider-diagnostics__pill--bad {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.insider-diagnostics__pill--muted {
+  background: #e5e7eb;
+  color: #4b5563;
+}
+
+.insider-diagnostics__detail {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  word-break: break-all;
+  line-height: 1.45;
+}
