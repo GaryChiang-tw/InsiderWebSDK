@@ -50,6 +50,7 @@
         <a class="brand" href="index.html">Insider Web SDK 測試站</a>
         <nav aria-label="主要導覽">
           <a href="index.html" aria-current="page">首頁</a>
+          <a href="category.html">分類頁</a>
           <a href="product.html">商品頁</a>
           <a href="cart.html">購物車</a>
           <a href="confirmation.html">完成頁</a>
@@ -61,11 +62,14 @@
       <h1>首頁</h1>
       <p>
         此站為靜態頁面骨架，用於與 Insider Integration Wizard
-        對齊：頁面事件、使用者屬性、商品／購物車／完成頁等後續可逐步接上。
+        對齊：頁面事件、分類列表、使用者屬性、商品／購物車／完成頁等。
       </p>
       <div class="card">
         <h2>頁面地圖</h2>
         <ul class="meta">
+          <li>
+            <a href="category.html">分類／列表頁</a> — Page data · Category（breadcrumb）
+          </li>
           <li><a href="product.html">商品頁</a> — Product page events</li>
           <li><a href="cart.html">購物車</a> — Cart page events</li>
           <li>
@@ -131,6 +135,11 @@
             <p class="dash-tile__title">商品頁</p>
             <p class="dash-tile__meta">課程 12345 · USD · 完整 product 欄位</p>
           </a>
+          <a class="dash-tile" href="category.html">
+            <p class="dash-tile__label">Page · category</p>
+            <p class="dash-tile__title">分類／列表</p>
+            <p class="dash-tile__meta">breadcrumb 範本 · TWD · listing_page_view</p>
+          </a>
           <a class="dash-tile" href="cart.html">
             <p class="dash-tile__label">Cart</p>
             <p class="dash-tile__title">購物車</p>
@@ -166,7 +175,7 @@
               <td>
                 <a href="index.html">首頁</a>、其餘頁之頁型事件
               </td>
-              <td><code>home</code> / <code>product</code> / <code>cart</code> / <code>purchase</code> + <code>init</code></td>
+              <td><code>home</code> / <code>category</code> / <code>product</code> / <code>cart</code> / <code>purchase</code> + <code>init</code></td>
             </tr>
             <tr>
               <td>2. User Attributes</td>
@@ -185,6 +194,15 @@
               <td>
                 <code>product</code>（範本欄位含 taxonomy、in_stock、locale、tags、omnibus_* 等）→
                 <code>currency: USD</code> → <code>init</code>
+              </td>
+            </tr>
+            <tr>
+              <td>3b. Page data · Category</td>
+              <td><a href="category.html">分類頁</a></td>
+              <td>
+                匿名 <code>user</code> → <code>currency: TWD</code> →
+                <code>category</code>（必填 <code>breadcrumb</code> 字串陣列，與文件範例相同）→
+                <code>init</code>
               </td>
             </tr>
             <tr>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="assets/js/insider-head.js"></script>
+    <script src="assets/js/insider-page-queue.js"></script>
+    <script
+      async
+      src="https://k9booksuat.api.useinsider.com/ins.js?id=10014687"
+    ></script>
+    <title>分類頁 · Insider Web SDK 測試站</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="index.html">Insider Web SDK 測試站</a>
+        <nav aria-label="主要導覽">
+          <a href="index.html">首頁</a>
+          <a href="category.html" aria-current="page">分類頁</a>
+          <a href="product.html">商品頁</a>
+          <a href="cart.html">購物車</a>
+          <a href="confirmation.html">完成頁</a>
+          <a href="login-complete.html">登入完成</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <h1>分類／列表頁（Page data · Category）</h1>
+      <p>
+        與官方文件相同：<code>type: &apos;category&apos;</code> 搭配
+        <code>init</code> 會送出 Listing Page View（<code>listing_page_view</code>）。
+        <strong>breadcrumb</strong> 為必填情境下的階層陣列；此頁佇列為
+        <code>user</code> → <code>currency: TWD</code> →
+        <code>category</code> → <code>init</code>（見
+        <code>assets/js/insider-page-queue.js</code>）。
+      </p>
+
+      <section
+        class="insider-preview insider-preview--category"
+        aria-labelledby="preview-category-title"
+      >
+        <header class="insider-preview__header">
+          <div>
+            <p class="insider-preview__eyebrow">InsiderQueue · type: category</p>
+            <h2 id="preview-category-title" class="insider-preview__title">
+              列表頁示意
+            </h2>
+            <ul class="taxonomy-crumbs" aria-label="breadcrumb（佇列 value）">
+              <li>Dresses</li>
+              <li>Night Dresses</li>
+            </ul>
+          </div>
+          <div class="insider-preview__chips" aria-label="佇列步驟">
+            <span class="chip chip--queue">user</span>
+            <span class="chip chip--queue">currency TWD</span>
+            <span class="chip chip--queue">category</span>
+            <span class="chip chip--accent">init</span>
+          </div>
+        </header>
+
+        <div class="category-preview">
+          <div class="category-preview__banner">
+            <span class="category-preview__banner-label">範本預覽</span>
+            <span class="category-preview__banner-hint">
+              下列為列表頁版面示意；送進 Insider 的仍為
+              <code>breadcrumb</code> 字串陣列。
+            </span>
+          </div>
+          <div class="category-preview__toolbar">
+            <span>Night Dresses</span>
+            <span class="category-preview__count">3 件（示意）</span>
+          </div>
+          <ul class="category-preview__grid">
+            <li class="category-preview-card">
+              <div class="category-preview-card__media" aria-hidden="true">
+                Long Sleeve<br />Night Gown
+              </div>
+              <div class="category-preview-card__body">
+                <h3 class="category-preview-card__title">Long Sleeve Night Gown</h3>
+                <p class="category-preview-card__meta">SKU ND-LS-01 · 有庫存</p>
+                <p class="category-preview-card__price">TWD 1,280</p>
+              </div>
+            </li>
+            <li class="category-preview-card">
+              <div
+                class="category-preview-card__media category-preview-card__media--photo"
+              >
+                <img
+                  src="assets/img/demo-product.svg"
+                  width="160"
+                  height="213"
+                  alt="示意圖：可對應站內課程商品圖"
+                />
+              </div>
+              <div class="category-preview-card__body">
+                <h3 class="category-preview-card__title">
+                  How to become a great product manager
+                </h3>
+                <p class="category-preview-card__meta">與商品頁範本 id 12345 對照</p>
+                <p class="category-preview-card__price">USD 95.2</p>
+              </div>
+            </li>
+            <li class="category-preview-card">
+              <div class="category-preview-card__media" aria-hidden="true">
+                Satin<br />Slip Dress
+              </div>
+              <div class="category-preview-card__body">
+                <h3 class="category-preview-card__title">Satin Slip Dress</h3>
+                <p class="category-preview-card__meta">SKU ND-SA-12</p>
+                <p class="category-preview-card__price">TWD 890</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <p class="meta" style="margin: 0 0 1rem">
+          佇列中的 <code>value.breadcrumb</code> 與文件範例一致：<code
+            >[&quot;Dresses&quot;, &quot;Night Dresses&quot;]</code
+          >。
+        </p>
+
+        <dl class="kv-grid insider-preview--compact">
+          <div>
+            <dt>category.value.breadcrumb[0]</dt>
+            <dd>Dresses</dd>
+          </div>
+          <div>
+            <dt>category.value.breadcrumb[1]</dt>
+            <dd>Night Dresses</dd>
+          </div>
+        </dl>
+
+        <p style="margin-top: 1.25rem; margin-bottom: 0">
+          <a href="product.html">前往商品頁</a>
+          ·
+          <a href="index.html">返回首頁</a>
+        </p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>Category page — Page data · Category（breadcrumb + init）。</p>
+      <p class="site-version">版本 <span class="js-version-display">—</span></p>
+    </footer>
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>

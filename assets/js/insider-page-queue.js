@@ -3,6 +3,7 @@
  * - User：登入完成頁為完整 loggedInUser；其餘為匿名最小 user。
  * - Product 頁：product → currency(USD) → init（user 仍先送）。
  * - 訂單完成頁：purchase（範本含完整 items）→ currency(USD) → init（user 仍先送）。
+ * - 分類／列表頁：user → currency(TWD) → category（breadcrumb）→ init。
  * - 其他頁：user → currency(TWD) → 頁型 → init。
  */
 (function () {
@@ -14,6 +15,7 @@
   if (path.indexOf("login-complete.html") !== -1) page = "login_complete";
   else if (path.indexOf("product.html") !== -1) page = "product";
   else if (path.indexOf("cart.html") !== -1) page = "cart";
+  else if (path.indexOf("category.html") !== -1) page = "category";
   else if (path.indexOf("confirmation.html") !== -1) page = "purchase";
 
   /** Product／purchase items 共用欄位範本 */
@@ -131,6 +133,14 @@
             total: 95.2,
             shipping_cost: 0,
             items: [lineItem],
+          },
+        });
+        break;
+      case "category":
+        q.push({
+          type: "category",
+          value: {
+            breadcrumb: ["Dresses", "Night Dresses"],
           },
         });
         break;
