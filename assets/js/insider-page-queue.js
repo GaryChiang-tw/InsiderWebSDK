@@ -1,6 +1,6 @@
 /**
  * 依目前網址組裝 InsiderQueue（須在 ins.js 之前載入）。
- * - User：登入完成頁為完整 loggedInUser；其餘為匿名最小 user。
+ * - User：登入完成頁為完整 loggedInUser；其餘為匿名 user（含 birthday 等精靈常見必填欄位）。
  * - Product 頁：product → currency(USD) → init（user 仍先送）。
  * - 訂單完成頁：purchase（範本含完整 items）→ currency(USD) → init（user 仍先送）。
  * - 分類／列表頁：user → currency(TWD) → category（breadcrumb）→ init。
@@ -47,6 +47,7 @@
 
   var anonymousUser = {
     uuid: "websdk-anonymous-visitor",
+    birthday: "21.03.1993",
     language: "zh_TW",
     gdpr_optin: true,
   };
