@@ -4,7 +4,7 @@
  * - Product 頁：product → currency(USD) → init（user 仍先送）。
  * - 訂單完成頁：purchase（範本含完整 items）→ currency(USD) → init（user 仍先送）。
  * - 分類／列表頁：user → currency(TWD) → category（breadcrumb）→ init。
- * - 結帳頁（精靈 Checkout Page Event）：僅 other → init（不送 user／currency）。
+ * - 結帳頁：other（custom：page_name、checkout_step、cart_total）→ init（不送 user／currency）。
  * - 其他頁：user → currency(TWD) → 頁型 → init。
  */
 (function () {
@@ -13,9 +13,18 @@
 
   var path = (window.location.pathname || "").toLowerCase();
 
-  /** Insider Wizard · Checkout Page Event（文件範例僅 other + init） */
+  /** Checkout：`other` 帶 custom 欄位後送 `init`（不送 user／currency） */
   if (path.indexOf("checkout.html") !== -1) {
-    q.push({ type: "other" });
+    q.push({
+      type: "other",
+      value: {
+        custom: {
+          page_name: "checkout",
+          checkout_step: "payment",
+          cart_total: 1280,
+        },
+      },
+    });
     q.push({ type: "init" });
     return;
   }

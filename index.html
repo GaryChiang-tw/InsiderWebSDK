@@ -74,8 +74,8 @@
           <li><a href="product.html">商品頁</a> — Product page events</li>
           <li><a href="cart.html">購物車</a> — Cart page events</li>
           <li>
-            <a href="checkout.html">結帳</a> — Wizard Checkout Page Event（<code>other</code>
-            → <code>init</code>）
+            <a href="checkout.html">結帳</a> — Checkout（<code>other.value.custom</code>：page_name、checkout_step、cart_total）→
+            <code>init</code>
           </li>
           <li>
             <a href="confirmation.html">訂單完成頁</a> — Confirmation page
@@ -157,7 +157,7 @@
           <a class="dash-tile" href="checkout.html">
             <p class="dash-tile__label">Checkout</p>
             <p class="dash-tile__title">結帳</p>
-            <p class="dash-tile__meta">Wizard：other → init（無 user／currency）</p>
+            <p class="dash-tile__meta">other.custom（checkout／payment／1280）→ init</p>
           </a>
           <a class="dash-tile" href="confirmation.html">
             <p class="dash-tile__label">Purchase</p>
@@ -188,7 +188,8 @@
               <td>1. Page Events and Types</td>
               <td>
                 <a href="index.html">首頁</a>、其餘頁之頁型事件；
-                <a href="checkout.html">結帳</a> 僅 <code>other</code> → <code>init</code>
+                <a href="checkout.html">結帳</a>：<code>other</code>（<code>custom</code>）→
+                <code>init</code>
               </td>
               <td><code>home</code> / <code>category</code> / <code>product</code> / <code>cart</code> / <code>purchase</code> + <code>init</code></td>
             </tr>
@@ -229,8 +230,8 @@
               <td>4b. Checkout Page Event</td>
               <td><a href="checkout.html">結帳</a></td>
               <td>
-                僅 <code>type: &apos;other&apos;</code> → <code>init</code>（與精靈文件一致；不送
-                <code>user</code>／<code>currency</code>）
+                <code>other</code>（<code>value.custom.page_name</code>、<code>checkout_step</code>、<code>cart_total</code>）→
+                <code>init</code>（不送 <code>user</code>／<code>currency</code>）
               </td>
             </tr>
             <tr>

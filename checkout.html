@@ -30,9 +30,10 @@
     <main>
       <h1>結帳</h1>
       <p>
-        供 Insider Wizard 測試 <strong>Checkout Page Event</strong>。載入時佇列與文件一致：
-        <code>other</code> → <code>init</code>（不送 <code>user</code>、<code>currency</code> 等；見
-        <code>assets/js/insider-page-queue.js</code> 開頭結帳分支）。
+        供 Insider Wizard 測試 <strong>Checkout Page Event</strong>。載入時佇列：
+        <code>other</code>（<code>value.custom</code>：page_name、checkout_step、cart_total）→
+        <code>init</code>（不送 <code>user</code>、<code>currency</code>；見
+        <code>assets/js/insider-page-queue.js</code> 結帳分支）。
       </p>
 
       <section class="insider-preview insider-preview--compact" aria-labelledby="preview-checkout-title">
@@ -50,8 +51,20 @@
         </header>
         <dl class="kv-grid insider-preview--compact">
           <div>
-            <dt>push 1</dt>
-            <dd><code>{ type: &apos;other&apos; }</code></dd>
+            <dt>push 1 · type</dt>
+            <dd><code>other</code></dd>
+          </div>
+          <div>
+            <dt>value.custom.page_name</dt>
+            <dd>checkout</dd>
+          </div>
+          <div>
+            <dt>value.custom.checkout_step</dt>
+            <dd>payment</dd>
+          </div>
+          <div>
+            <dt>value.custom.cart_total</dt>
+            <dd>1280</dd>
           </div>
           <div>
             <dt>push 2</dt>
@@ -66,7 +79,7 @@
       </section>
     </main>
     <footer class="site-footer">
-      <p>Checkout page — Wizard Checkout Page Event（other + init）。</p>
+      <p>Checkout page — <code>other</code>（custom 結帳欄位）→ <code>init</code>。</p>
       <p class="site-version">版本 <span class="js-version-display">—</span></p>
     </footer>
     <script src="assets/js/site.js" defer></script>
