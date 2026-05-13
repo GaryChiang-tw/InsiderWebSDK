@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="assets/js/insider-head.js"></script>
+    <script src="assets/js/insider-page-queue.js"></script>
+    <script
+      async
+      src="https://k9booksuat.api.useinsider.com/ins.js?id=10014687"
+    ></script>
+    <title>結帳 · Insider Web SDK 測試站</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="index.html">Insider Web SDK 測試站</a>
+        <nav aria-label="主要導覽">
+          <a href="index.html">首頁</a>
+          <a href="category.html">分類頁</a>
+          <a href="product.html">商品頁</a>
+          <a href="cart.html">購物車</a>
+          <a href="checkout.html" aria-current="page">結帳</a>
+          <a href="confirmation.html">完成頁</a>
+          <a href="login-complete.html">登入完成</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <h1>結帳</h1>
+      <p>
+        供 Insider Wizard 測試 <strong>Checkout Page Event</strong>。載入時佇列與文件一致：
+        <code>other</code> → <code>init</code>（不送 <code>user</code>、<code>currency</code> 等；見
+        <code>assets/js/insider-page-queue.js</code> 開頭結帳分支）。
+      </p>
+
+      <section class="insider-preview insider-preview--compact" aria-labelledby="preview-checkout-title">
+        <header class="insider-preview__header">
+          <div>
+            <p class="insider-preview__eyebrow">InsiderQueue · Checkout</p>
+            <h2 id="preview-checkout-title" class="insider-preview__title" style="font-size: 1.1rem">
+              結帳頁事件
+            </h2>
+          </div>
+          <div class="insider-preview__chips" aria-label="佇列步驟">
+            <span class="chip chip--queue">other</span>
+            <span class="chip chip--accent">init</span>
+          </div>
+        </header>
+        <dl class="kv-grid insider-preview--compact">
+          <div>
+            <dt>push 1</dt>
+            <dd><code>{ type: &apos;other&apos; }</code></dd>
+          </div>
+          <div>
+            <dt>push 2</dt>
+            <dd><code>{ type: &apos;init&apos; }</code></dd>
+          </div>
+        </dl>
+        <p style="margin-top: 1.25rem; margin-bottom: 0">
+          <a href="cart.html">返回購物車</a>
+          ·
+          <a href="confirmation.html">前往完成頁（purchase 範本）</a>
+        </p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>Checkout page — Wizard Checkout Page Event（other + init）。</p>
+      <p class="site-version">版本 <span class="js-version-display">—</span></p>
+    </footer>
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>

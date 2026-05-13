@@ -53,6 +53,7 @@
           <a href="category.html">分類頁</a>
           <a href="product.html">商品頁</a>
           <a href="cart.html">購物車</a>
+          <a href="checkout.html">結帳</a>
           <a href="confirmation.html">完成頁</a>
           <a href="login-complete.html">登入完成</a>
         </nav>
@@ -62,7 +63,7 @@
       <h1>首頁</h1>
       <p>
         此站為靜態頁面骨架，用於與 Insider Integration Wizard
-        對齊：頁面事件、分類列表、使用者屬性、商品／購物車／完成頁等。
+        對齊：頁面事件、分類列表、使用者屬性、商品／購物車／結帳／完成頁等。
       </p>
       <div class="card">
         <h2>頁面地圖</h2>
@@ -72,6 +73,10 @@
           </li>
           <li><a href="product.html">商品頁</a> — Product page events</li>
           <li><a href="cart.html">購物車</a> — Cart page events</li>
+          <li>
+            <a href="checkout.html">結帳</a> — Wizard Checkout Page Event（<code>other</code>
+            → <code>init</code>）
+          </li>
           <li>
             <a href="confirmation.html">訂單完成頁</a> — Confirmation page
             events
@@ -149,6 +154,11 @@
             <p class="dash-tile__title">購物車</p>
             <p class="dash-tile__meta">total 95.2 TWD · lineItem 與商品同步</p>
           </a>
+          <a class="dash-tile" href="checkout.html">
+            <p class="dash-tile__label">Checkout</p>
+            <p class="dash-tile__title">結帳</p>
+            <p class="dash-tile__meta">Wizard：other → init（無 user／currency）</p>
+          </a>
           <a class="dash-tile" href="confirmation.html">
             <p class="dash-tile__label">Purchase</p>
             <p class="dash-tile__title">訂單完成</p>
@@ -177,7 +187,8 @@
             <tr>
               <td>1. Page Events and Types</td>
               <td>
-                <a href="index.html">首頁</a>、其餘頁之頁型事件
+                <a href="index.html">首頁</a>、其餘頁之頁型事件；
+                <a href="checkout.html">結帳</a> 僅 <code>other</code> → <code>init</code>
               </td>
               <td><code>home</code> / <code>category</code> / <code>product</code> / <code>cart</code> / <code>purchase</code> + <code>init</code></td>
             </tr>
@@ -213,6 +224,14 @@
               <td>4. Cart Page Events</td>
               <td><a href="cart.html">購物車</a></td>
               <td><code>type: &apos;cart&apos;</code>（total、items[]）</td>
+            </tr>
+            <tr>
+              <td>4b. Checkout Page Event</td>
+              <td><a href="checkout.html">結帳</a></td>
+              <td>
+                僅 <code>type: &apos;other&apos;</code> → <code>init</code>（與精靈文件一致；不送
+                <code>user</code>／<code>currency</code>）
+              </td>
             </tr>
             <tr>
               <td>5. Confirmation Page Events</td>
