@@ -45,9 +45,10 @@
     item_end_date: "21.03.1993",
   };
 
+  /** 匿名 user：birthday 建議 YYYY-MM-DD（精靈／後台常以此格式驗證） */
   var anonymousUser = {
     uuid: "websdk-anonymous-visitor",
-    birthday: "21.03.1993",
+    birthday: "1993-03-21",
     language: "zh_TW",
     gdpr_optin: true,
   };
@@ -56,7 +57,7 @@
   var loggedInUser = {
     uuid: "7bacpk03nc",
     gender: "M",
-    birthday: "21.03.1993",
+    birthday: "1993-03-21",
     has_transacted: true,
     transaction_count: 2,
     gdpr_optin: true,
