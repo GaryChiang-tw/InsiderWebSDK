@@ -45,10 +45,10 @@
     item_end_date: "21.03.1993",
   };
 
-  /** 匿名 user：birthday 建議 YYYY-MM-DD（精靈／後台常以此格式驗證） */
+  /** 匿名 user：birthday 為 Datetime（ISO 8601，例 2000-01-20T00:00:00Z） */
   var anonymousUser = {
     uuid: "websdk-anonymous-visitor",
-    birthday: "1993-03-21",
+    birthday: "1993-03-21T00:00:00Z",
     language: "zh_TW",
     gdpr_optin: true,
   };
@@ -57,7 +57,7 @@
   var loggedInUser = {
     uuid: "7bacpk03nc",
     gender: "M",
-    birthday: "1993-03-21",
+    birthday: "1993-03-21T00:00:00Z",
     has_transacted: true,
     transaction_count: 2,
     gdpr_optin: true,
