@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="assets/js/insider-head.js"></script>
+    <script src="assets/js/insider-page-queue.js"></script>
     <script
       async
       src="https://k9booksuat.api.useinsider.com/ins.js?id=10014687"
@@ -20,25 +21,94 @@
           <a href="product.html">商品頁</a>
           <a href="cart.html">購物車</a>
           <a href="confirmation.html" aria-current="page">完成頁</a>
+          <a href="login-complete.html">登入完成</a>
         </nav>
       </div>
     </header>
     <main>
       <h1>訂單完成</h1>
       <p>
-        此頁預留給 Confirmation page events（訂單編號、總金額、購買商品列表等）。
+        佇列：<code>user</code>（匿名）→ <code>purchase</code>（完整
+        <code>items[]</code>）→ <code>currency: USD</code> →
+        <code>init</code>，與範本順序一致（見
+        <code>insider-page-queue.js</code> 內 <code>purchasePageValue</code>）。
       </p>
-      <div class="card">
-        <h2>訂單摘要（示意）</h2>
-        <ul class="meta">
-          <li>訂單編號：<code>ORD-2026-DEMO-0001</code></li>
-          <li>總金額：<code>1290</code></li>
-          <li>狀態：已完成（測試資料）</li>
-        </ul>
-        <p style="margin-top: 1rem; margin-bottom: 0">
+
+      <section class="insider-preview" aria-labelledby="preview-purchase-title">
+        <header class="insider-preview__header">
+          <div>
+            <p class="insider-preview__eyebrow">InsiderQueue · type: purchase</p>
+            <h2 id="preview-purchase-title" class="insider-preview__title">
+              訂單完成
+            </h2>
+          </div>
+          <div class="insider-preview__chips">
+            <span class="chip chip--queue">user</span>
+            <span class="chip chip--queue">purchase</span>
+            <span class="chip chip--queue">currency USD</span>
+            <span class="chip chip--accent">init</span>
+          </div>
+        </header>
+
+        <div class="order-success">
+          <div class="order-success__icon" aria-hidden="true">✓</div>
+          <p class="meta" style="margin: 0">付款成功 · 測試資料</p>
+          <p class="order-success__id">xyz123456</p>
+          <p style="margin: 0.5rem 0 0; font-size: 1.35rem; font-weight: 800">
+            總計 <span style="color: #6366f1">95.2</span>
+            <span class="meta" style="font-size: 0.9rem">USD</span>
+          </p>
+        </div>
+
+        <div class="cart-visual" style="margin-top: 1.25rem">
+          <div class="cart-visual__head">
+            <span>購買項目（items[0] 含完整商品欄位）</span>
+            <span class="cart-visual__total">1 件</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>商品</th>
+                <th>數量</th>
+                <th>特價</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>How to become a great product manager</strong>
+                  <div class="meta" style="margin-top: 0.25rem">
+                    id 12345 · SKU SKU1234 · brand My Brand
+                  </div>
+                </td>
+                <td>1</td>
+                <td>95.2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <dl class="kv-grid insider-preview--compact" style="margin-top: 1rem">
+          <div>
+            <dt>order_id</dt>
+            <dd>xyz123456</dd>
+          </div>
+          <div>
+            <dt>items[0].url</dt>
+            <dd>
+              https://www.mywebsite.com/en-us/product-management/advanced-courses/12345/
+            </dd>
+          </div>
+          <div>
+            <dt>items[0].tags</dt>
+            <dd>Tag 1, Tag 2, Tag 3</dd>
+          </div>
+        </dl>
+
+        <p style="margin-top: 1.25rem; margin-bottom: 0; text-align: center">
           <a href="index.html">回到首頁</a>
         </p>
-      </div>
+      </section>
     </main>
     <footer class="site-footer">
       <p>Confirmation page — 後續可對齊轉換／完成購買事件。</p>

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="assets/js/insider-head.js"></script>
+    <script src="assets/js/insider-page-queue.js"></script>
     <script
       async
       src="https://k9booksuat.api.useinsider.com/ins.js?id=10014687"
@@ -20,23 +21,134 @@
           <a href="product.html" aria-current="page">商品頁</a>
           <a href="cart.html">購物車</a>
           <a href="confirmation.html">完成頁</a>
+          <a href="login-complete.html">登入完成</a>
         </nav>
       </div>
     </header>
     <main>
-      <h1>示範商品</h1>
-      <p>此頁預留給商品資訊與 Product page events（例如商品 ID、價格、分類）。</p>
-      <div class="card">
-        <h2>Demo 商品 A</h2>
-        <ul class="meta">
-          <li>商品 ID：<code>SKU-DEMO-001</code></li>
-          <li>價格：<code>1290</code>（測試用數值）</li>
-          <li>分類：線上課程（可依帳號產業調整）</li>
-        </ul>
-        <p style="margin-top: 1rem; margin-bottom: 0">
-          <a href="cart.html">前往購物車</a>
-        </p>
-      </div>
+      <h1>商品頁</h1>
+      <p>
+        載入時佇列順序：<code>user</code>（匿名）→ <code>product</code> →
+        <code>currency: USD</code> → <code>init</code>。下方畫面與
+        <code>insider-page-queue.js</code> 內 <code>productPageValue</code> 一致。
+      </p>
+
+      <section class="insider-preview insider-preview--product" aria-labelledby="preview-product-title">
+        <header class="insider-preview__header">
+          <div>
+            <p class="insider-preview__eyebrow">InsiderQueue · type: product</p>
+            <h2 id="preview-product-title" class="insider-preview__title">
+              How to become a great product manager
+            </h2>
+            <ul class="taxonomy-crumbs" aria-label="taxonomy">
+              <li>Courses</li>
+              <li>Product Management</li>
+              <li>Advanced Courses</li>
+            </ul>
+          </div>
+          <div class="insider-preview__chips" aria-label="佇列步驟">
+            <span class="chip chip--queue">user</span>
+            <span class="chip chip--queue">product</span>
+            <span class="chip chip--queue">currency USD</span>
+            <span class="chip chip--accent">init</span>
+          </div>
+        </header>
+
+        <div class="product-hero">
+          <figure class="product-hero__media">
+            <img
+              src="assets/img/demo-product.svg"
+              width="320"
+              height="240"
+              alt="課程示意圖（範本 product_image_url 見下方欄位）"
+            />
+          </figure>
+          <div class="product-hero__body">
+            <div class="price-block">
+              <span class="price-block__sale">95.2</span>
+              <span class="price-block__list">100</span>
+              <span class="price-block__currency">USD</span>
+            </div>
+            <p class="meta" style="margin: 0 0 0.75rem">
+              <span class="rating-stars" aria-hidden="true">★★★★★</span>
+              <strong>5</strong> · <span>id 12345</span> ·
+              <span>SKU SKU1234</span>
+            </p>
+            <ul class="tag-pills" aria-label="tags">
+              <li>Tag 1</li>
+              <li>Tag 2</li>
+              <li>Tag 3</li>
+            </ul>
+            <dl class="kv-grid" style="margin-top: 1rem">
+              <div>
+                <dt>url</dt>
+                <dd>
+                  https://www.mywebsite.com/en-us/product-management/advanced-courses/12345/
+                </dd>
+              </div>
+              <div>
+                <dt>product_image_url</dt>
+                <dd>https://www.mywebsite.com/course-images/12345.png/</dd>
+              </div>
+              <div>
+                <dt>locale</dt>
+                <dd>en_US</dd>
+              </div>
+              <div>
+                <dt>groupcode</dt>
+                <dd>Group name</dd>
+              </div>
+              <div>
+                <dt>description</dt>
+                <dd>Product description</dd>
+              </div>
+              <div>
+                <dt>brand</dt>
+                <dd>My Brand</dd>
+              </div>
+              <div>
+                <dt>product_type</dt>
+                <dd>Box</dd>
+              </div>
+              <div>
+                <dt>gender</dt>
+                <dd>Male</dd>
+              </div>
+              <div>
+                <dt>in_stock</dt>
+                <dd class="bool-true">true</dd>
+              </div>
+              <div>
+                <dt>stock</dt>
+                <dd>100</dd>
+              </div>
+              <div>
+                <dt>omnibus_price</dt>
+                <dd>35.12</dd>
+              </div>
+              <div>
+                <dt>omnibus_discount</dt>
+                <dd>4.75</dd>
+              </div>
+              <div>
+                <dt>item_update_date</dt>
+                <dd>21.03.1993</dd>
+              </div>
+              <div>
+                <dt>item_start_date</dt>
+                <dd>21.03.1993</dd>
+              </div>
+              <div>
+                <dt>item_end_date</dt>
+                <dd>21.03.1993</dd>
+              </div>
+            </dl>
+            <p style="margin-top: 1.25rem; margin-bottom: 0">
+              <a href="cart.html">前往購物車</a>
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="site-footer">
       <p>Product page — 後續可在此頁或共用 JS 送出 Insider 所需事件。</p>

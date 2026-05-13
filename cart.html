@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="assets/js/insider-head.js"></script>
+    <script src="assets/js/insider-page-queue.js"></script>
     <script
       async
       src="https://k9booksuat.api.useinsider.com/ins.js?id=10014687"
@@ -20,36 +21,87 @@
           <a href="product.html">商品頁</a>
           <a href="cart.html" aria-current="page">購物車</a>
           <a href="confirmation.html">完成頁</a>
+          <a href="login-complete.html">登入完成</a>
         </nav>
       </div>
     </header>
     <main>
       <h1>購物車</h1>
-      <p>此頁預留給 Cart page events（購物車內容、金額、貨幣等）。</p>
-      <div class="card">
-        <h2>購物車內容（示意）</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>商品</th>
-              <th>數量</th>
-              <th>小計</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Demo 商品 A</td>
-              <td>1</td>
-              <td>1290</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="margin-top: 1rem; margin-bottom: 0">
+      <p>
+        佇列：<code>user</code> → <code>currency: TWD</code> → <code>cart</code> →
+        <code>init</code>。下方與 <code>lineItem</code>／<code>total</code> 範本一致。
+      </p>
+
+      <section class="insider-preview" aria-labelledby="preview-cart-title">
+        <header class="insider-preview__header">
+          <div>
+            <p class="insider-preview__eyebrow">InsiderQueue · type: cart</p>
+            <h2 id="preview-cart-title" class="insider-preview__title">購物車內容</h2>
+          </div>
+          <div class="insider-preview__chips">
+            <span class="chip chip--queue">user</span>
+            <span class="chip chip--queue">currency TWD</span>
+            <span class="chip chip--queue">cart</span>
+            <span class="chip chip--accent">init</span>
+          </div>
+        </header>
+
+        <div class="cart-visual">
+          <div class="cart-visual__head">
+            <span>小計（1 件）</span>
+            <span class="cart-visual__total">95.2 TWD</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>商品</th>
+                <th>數量</th>
+                <th>單價 / 特價</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>How to become a great product manager</strong>
+                  <div class="meta" style="margin-top: 0.25rem">
+                    id <code>12345</code>
+                  </div>
+                </td>
+                <td>1</td>
+                <td>
+                  <span style="text-decoration: line-through; color: var(--muted)"
+                    >100</span
+                  >
+                  → <strong>95.2</strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <dl class="kv-grid insider-preview--compact" style="margin-top: 1rem">
+          <div>
+            <dt>shipping_cost</dt>
+            <dd>0</dd>
+          </div>
+          <div>
+            <dt>items[0].taxonomy</dt>
+            <dd>Courses / Product Management / Advanced Courses</dd>
+          </div>
+          <div>
+            <dt>items[0].url</dt>
+            <dd>
+              https://www.mywebsite.com/en-us/product-management/advanced-courses/12345/
+            </dd>
+          </div>
+        </dl>
+
+        <p style="margin-top: 1.25rem; margin-bottom: 0">
           <a href="confirmation.html">模擬結帳完成</a>
           ·
           <a href="product.html">返回商品頁</a>
         </p>
-      </div>
+      </section>
     </main>
     <footer class="site-footer">
       <p>Cart page — 後續可對齊 Insider 購物車事件欄位。</p>

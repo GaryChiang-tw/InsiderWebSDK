@@ -4,23 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="assets/js/insider-head.js"></script>
-    <!-- home + init 必須在 ins.js 處理佇列前寫入；建議先 user 再 page（見 Academy Web SDK 整合順序） -->
-    <script>
-      window.InsiderQueue.push({
-        type: "user",
-        value: {
-          uuid: "web-sdk-wizard-test-visitor",
-          language: "zh_TW",
-          gdpr_optin: true,
-        },
-      });
-      window.InsiderQueue.push({
-        type: "home",
-      });
-      window.InsiderQueue.push({
-        type: "init",
-      });
-    </script>
+    <script src="assets/js/insider-page-queue.js"></script>
     <script
       async
       src="https://k9booksuat.api.useinsider.com/ins.js?id=10014687"
@@ -69,6 +53,7 @@
           <a href="product.html">商品頁</a>
           <a href="cart.html">購物車</a>
           <a href="confirmation.html">完成頁</a>
+          <a href="login-complete.html">登入完成</a>
         </nav>
       </div>
     </header>
@@ -87,7 +72,137 @@
             <a href="confirmation.html">訂單完成頁</a> — Confirmation page
             events
           </li>
+          <li>
+            <a href="login-complete.html">模擬登入完成</a> — User attributes（登入後）
+          </li>
         </ul>
+      </div>
+
+      <section class="insider-preview insider-preview--compact" aria-labelledby="preview-home-h2">
+        <header class="insider-preview__header">
+          <div>
+            <p class="insider-preview__eyebrow">本頁 · InsiderQueue</p>
+            <h2 id="preview-home-h2" class="insider-preview__title" style="font-size: 1.1rem">
+              首頁（home）
+            </h2>
+          </div>
+          <div class="insider-preview__chips">
+            <span class="chip chip--queue">user 匿名</span>
+            <span class="chip chip--queue">currency TWD</span>
+            <span class="chip chip--queue">home</span>
+            <span class="chip chip--accent">init</span>
+          </div>
+        </header>
+        <dl class="kv-grid insider-preview--compact">
+          <div>
+            <dt>user.uuid</dt>
+            <dd>websdk-anonymous-visitor</dd>
+          </div>
+          <div>
+            <dt>user.language / gdpr_optin</dt>
+            <dd>zh_TW / true</dd>
+          </div>
+          <div>
+            <dt>home.custom.demo_page</dt>
+            <dd>home</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="insider-preview insider-preview--dashboard" aria-labelledby="dash-title">
+        <h2 id="dash-title">範本資料視覺化</h2>
+        <p class="meta" style="margin-bottom: 0">
+          各頁以卡片呈現與 <code>insider-page-queue.js</code> 相同的測試欄位，方便對照
+          Network／User Profile。
+        </p>
+        <div class="dash-tiles">
+          <a class="dash-tile" href="index.html">
+            <p class="dash-tile__label">Page · home</p>
+            <p class="dash-tile__title">首頁</p>
+            <p class="dash-tile__meta">匿名 user + TWD + home（custom.demo_page）</p>
+          </a>
+          <a class="dash-tile" href="login-complete.html">
+            <p class="dash-tile__label">User attributes</p>
+            <p class="dash-tile__title">登入完成</p>
+            <p class="dash-tile__meta">John Doe 範本 · other「模擬登入完成」</p>
+          </a>
+          <a class="dash-tile" href="product.html">
+            <p class="dash-tile__label">Product</p>
+            <p class="dash-tile__title">商品頁</p>
+            <p class="dash-tile__meta">課程 12345 · USD · 完整 product 欄位</p>
+          </a>
+          <a class="dash-tile" href="cart.html">
+            <p class="dash-tile__label">Cart</p>
+            <p class="dash-tile__title">購物車</p>
+            <p class="dash-tile__meta">total 95.2 TWD · lineItem 與商品同步</p>
+          </a>
+          <a class="dash-tile" href="confirmation.html">
+            <p class="dash-tile__label">Purchase</p>
+            <p class="dash-tile__title">訂單完成</p>
+            <p class="dash-tile__meta">xyz123456 · USD · purchase 完整 items[]</p>
+          </a>
+        </div>
+      </section>
+
+      <div class="card">
+        <h2>精靈驗測對照（Integration Element Status）</h2>
+        <p class="meta" style="margin-bottom: 0.75rem">
+          各頁 <code>&lt;head&gt;</code> 皆載入
+          <code>assets/js/insider-page-queue.js</code>（在
+          <code>ins.js</code> 之前），會自動依網址推送下列佇列（再送
+          <code>init</code>）：
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>測試頁面</th>
+              <th>佇列重點</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Page Events and Types</td>
+              <td>
+                <a href="index.html">首頁</a>、其餘頁之頁型事件
+              </td>
+              <td><code>home</code> / <code>product</code> / <code>cart</code> / <code>purchase</code> + <code>init</code></td>
+            </tr>
+            <tr>
+              <td>2. User Attributes</td>
+              <td>
+                <a href="login-complete.html">模擬登入完成頁</a>
+              </td>
+              <td>
+                完整 <code>user</code>（範本欄位：uuid、gender、birthday、has_transacted、transaction_count、gdpr、name、surname、username、email、各
+                optin、language、returning、static_segment_id、age）；其餘頁僅匿名
+                <code>user</code>
+              </td>
+            </tr>
+            <tr>
+              <td>3. Product Page Events</td>
+              <td><a href="product.html">商品頁</a></td>
+              <td>
+                <code>product</code>（範本欄位含 taxonomy、in_stock、locale、tags、omnibus_* 等）→
+                <code>currency: USD</code> → <code>init</code>
+              </td>
+            </tr>
+            <tr>
+              <td>4. Cart Page Events</td>
+              <td><a href="cart.html">購物車</a></td>
+              <td><code>type: &apos;cart&apos;</code>（total、items[]）</td>
+            </tr>
+            <tr>
+              <td>5. Confirmation Page Events</td>
+              <td><a href="confirmation.html">完成頁</a></td>
+              <td>
+                <code>purchase</code>（order_id、total、完整
+                <code>items[]</code>）→ <code>currency: USD</code> →
+                <code>init</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="notice">
         <strong>提醒：</strong>在後台「測試 Insider Tag

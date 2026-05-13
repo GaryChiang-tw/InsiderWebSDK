@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="assets/js/insider-head.js"></script>
+    <script src="assets/js/insider-page-queue.js"></script>
+    <script
+      async
+      src="https://k9booksuat.api.useinsider.com/ins.js?id=10014687"
+    ></script>
+    <title>模擬登入完成 · Insider Web SDK 測試站</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="index.html">Insider Web SDK 測試站</a>
+        <nav aria-label="主要導覽">
+          <a href="index.html">首頁</a>
+          <a href="product.html">商品頁</a>
+          <a href="cart.html">購物車</a>
+          <a href="confirmation.html">完成頁</a>
+          <a href="login-complete.html" aria-current="page">登入完成</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <h1>模擬登入完成</h1>
+      <p>
+        佇列：<code>user</code>（完整屬性）→ <code>currency: TWD</code> →
+        <code>other</code>（<code>模擬登入完成</code>）→ <code>init</code>。
+      </p>
+
+      <section class="insider-preview" aria-labelledby="preview-user-title">
+        <header class="insider-preview__header">
+          <div>
+            <p class="insider-preview__eyebrow">InsiderQueue · type: user</p>
+            <h2 id="preview-user-title" class="insider-preview__title">
+              已登入使用者（範本）
+            </h2>
+          </div>
+          <div class="insider-preview__chips">
+            <span class="chip chip--queue">user</span>
+            <span class="chip chip--queue">currency TWD</span>
+            <span class="chip chip--queue">other</span>
+            <span class="chip chip--accent">init</span>
+          </div>
+        </header>
+
+        <div class="user-card">
+          <div class="user-card__avatar" aria-hidden="true">JD</div>
+          <div style="min-width: 0">
+            <p style="margin: 0; font-size: 1.15rem; font-weight: 700">
+              John Doe
+              <span class="meta" style="font-weight: 400">(@jdoe)</span>
+            </p>
+            <p class="meta" style="margin: 0.25rem 0 0.75rem">
+              jdoe@mailservice.com · +1234567890
+            </p>
+            <dl class="kv-grid insider-preview--compact">
+              <div>
+                <dt>uuid</dt>
+                <dd>7bacpk03nc</dd>
+              </div>
+              <div>
+                <dt>gender</dt>
+                <dd>M</dd>
+              </div>
+              <div>
+                <dt>birthday</dt>
+                <dd>21.03.1993</dd>
+              </div>
+              <div>
+                <dt>has_transacted</dt>
+                <dd class="bool-true">true</dd>
+              </div>
+              <div>
+                <dt>transaction_count</dt>
+                <dd>2</dd>
+              </div>
+              <div>
+                <dt>gdpr_optin</dt>
+                <dd class="bool-true">true</dd>
+              </div>
+              <div>
+                <dt>email_optin</dt>
+                <dd>false</dd>
+              </div>
+              <div>
+                <dt>sms_optin / whatsapp_optin</dt>
+                <dd>true / true</dd>
+              </div>
+              <div>
+                <dt>language</dt>
+                <dd>en_us</dd>
+              </div>
+              <div>
+                <dt>returning</dt>
+                <dd class="bool-true">true</dd>
+              </div>
+              <div>
+                <dt>static_segment_id</dt>
+                <dd>[1, 3, 5]</dd>
+              </div>
+              <div>
+                <dt>age</dt>
+                <dd>34</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <p class="meta" style="margin: 1.25rem 0 0">
+          頁型 <code>other</code>：<code>name</code> =「模擬登入完成」、<code
+            >custom.post_login_demo</code
+          >
+          = true
+        </p>
+        <p style="margin-top: 1rem; margin-bottom: 0">
+          <a href="index.html">回到首頁</a>
+        </p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>登入完成頁 — 用於精靈「User Attributes」與登入後情境驗測。</p>
+      <p class="site-version">版本 <span class="js-version-display">—</span></p>
+    </footer>
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>
