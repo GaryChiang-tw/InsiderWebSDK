@@ -16,18 +16,26 @@
     <header class="site-header">
       <div class="site-header-inner">
         <a class="brand" href="index.html">Insider Web SDK 測試站</a>
-        <nav aria-label="主要導覽">
-          <a href="index.html">首頁</a>
-          <a href="category.html">分類頁</a>
-          <a href="product.html">商品頁</a>
-          <a href="cart.html">購物車</a>
-          <a href="checkout.html">結帳</a>
-          <a href="confirmation.html">完成頁</a>
-          <a href="login-complete.html" aria-current="page">登入完成</a>
-        </nav>
       </div>
     </header>
-    <main>
+    <main class="layout-wizard">
+      <nav class="wizard-menu" aria-labelledby="wizard-menu-title">
+        <p id="wizard-menu-title" class="wizard-menu__heading">精靈驗測對照</p>
+        <p class="wizard-menu__sub">Integration Element Status · 步驟 1–10</p>
+        <ol class="wizard-menu__list">
+          <li><a href="index.html" class="wizard-menu__link">1. Test Home Page Integration</a></li>
+          <li><a href="category.html" class="wizard-menu__link">2. Test Category Page Integration</a></li>
+          <li><a href="product.html" class="wizard-menu__link">3. Test Product Page Integration</a></li>
+          <li><a href="cart.html" class="wizard-menu__link">4. Test Cart Page Integration</a></li>
+          <li><a href="checkout.html" class="wizard-menu__link">5. Test Checkout Page Integration</a></li>
+          <li><a href="confirmation.html" class="wizard-menu__link">6. Test Confirmation Page</a></li>
+          <li><a href="login-complete.html" class="wizard-menu__link" aria-current="page">7. Test User Events</a></li>
+          <li><a href="product.html" class="wizard-menu__link">8. Test Product Events</a></li>
+          <li><a href="cart.html" class="wizard-menu__link">9. Test Cart Events</a></li>
+          <li><a href="confirmation.html" class="wizard-menu__link">10. Test Confirmation Events</a></li>
+        </ol>
+      </nav>
+      <div class="layout-wizard__main">
       <h1>模擬登入完成</h1>
       <p>
         佇列：<code>user</code>（完整屬性）→ <code>currency: TWD</code> →
@@ -123,6 +131,7 @@
           <a href="index.html">回到首頁</a>
         </p>
       </section>
+    </div>
     </main>
     <footer class="site-footer">
       <p>登入完成頁 — 用於精靈「User Attributes」與登入後情境驗測。</p>

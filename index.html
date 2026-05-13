@@ -48,44 +48,31 @@
     <header class="site-header">
       <div class="site-header-inner">
         <a class="brand" href="index.html">Insider Web SDK 測試站</a>
-        <nav aria-label="主要導覽">
-          <a href="index.html" aria-current="page">首頁</a>
-          <a href="category.html">分類頁</a>
-          <a href="product.html">商品頁</a>
-          <a href="cart.html">購物車</a>
-          <a href="checkout.html">結帳</a>
-          <a href="confirmation.html">完成頁</a>
-          <a href="login-complete.html">登入完成</a>
-        </nav>
       </div>
     </header>
-    <main>
+    <main class="layout-wizard">
+      <nav class="wizard-menu" aria-labelledby="wizard-menu-title">
+        <p id="wizard-menu-title" class="wizard-menu__heading">精靈驗測對照</p>
+        <p class="wizard-menu__sub">Integration Element Status · 步驟 1–10</p>
+        <ol class="wizard-menu__list">
+          <li><a href="index.html" class="wizard-menu__link" aria-current="page">1. Test Home Page Integration</a></li>
+          <li><a href="category.html" class="wizard-menu__link">2. Test Category Page Integration</a></li>
+          <li><a href="product.html" class="wizard-menu__link">3. Test Product Page Integration</a></li>
+          <li><a href="cart.html" class="wizard-menu__link">4. Test Cart Page Integration</a></li>
+          <li><a href="checkout.html" class="wizard-menu__link">5. Test Checkout Page Integration</a></li>
+          <li><a href="confirmation.html" class="wizard-menu__link">6. Test Confirmation Page</a></li>
+          <li><a href="login-complete.html" class="wizard-menu__link">7. Test User Events</a></li>
+          <li><a href="product.html" class="wizard-menu__link">8. Test Product Events</a></li>
+          <li><a href="cart.html" class="wizard-menu__link">9. Test Cart Events</a></li>
+          <li><a href="confirmation.html" class="wizard-menu__link">10. Test Confirmation Events</a></li>
+        </ol>
+      </nav>
+      <div class="layout-wizard__main">
       <h1>首頁</h1>
       <p>
         此站為靜態頁面骨架，用於與 Insider Integration Wizard
         對齊：頁面事件、分類列表、使用者屬性、商品／購物車／結帳／完成頁等。
       </p>
-      <div class="card">
-        <h2>頁面地圖</h2>
-        <ul class="meta">
-          <li>
-            <a href="category.html">分類／列表頁</a> — Page data · Category（breadcrumb）
-          </li>
-          <li><a href="product.html">商品頁</a> — Product page events</li>
-          <li><a href="cart.html">購物車</a> — Cart page events</li>
-          <li>
-            <a href="checkout.html">結帳</a> — Checkout（<code>other.value.custom</code>：page_name、checkout_step、cart_total）→
-            <code>init</code>
-          </li>
-          <li>
-            <a href="confirmation.html">訂單完成頁</a> — Confirmation page
-            events
-          </li>
-          <li>
-            <a href="login-complete.html">模擬登入完成</a> — User attributes（登入後）
-          </li>
-        </ul>
-      </div>
 
       <section class="insider-preview insider-preview--compact" aria-labelledby="preview-home-h2">
         <header class="insider-preview__header">
@@ -122,125 +109,99 @@
         </dl>
       </section>
 
-      <section class="insider-preview insider-preview--dashboard" aria-labelledby="dash-title">
-        <h2 id="dash-title">範本資料視覺化</h2>
-        <p class="meta" style="margin-bottom: 0">
-          各頁以卡片呈現與 <code>insider-page-queue.js</code> 相同的測試欄位，方便對照
-          Network／User Profile。
-        </p>
-        <div class="dash-tiles">
-          <a class="dash-tile" href="index.html">
-            <p class="dash-tile__label">Page · home</p>
-            <p class="dash-tile__title">首頁</p>
-            <p class="dash-tile__meta">匿名 user + TWD + home（custom.demo_page）</p>
-          </a>
-          <a class="dash-tile" href="login-complete.html">
-            <p class="dash-tile__label">User attributes</p>
-            <p class="dash-tile__title">登入完成</p>
-            <p class="dash-tile__meta">John Doe 範本 · other「模擬登入完成」</p>
-          </a>
-          <a class="dash-tile" href="product.html">
-            <p class="dash-tile__label">Product</p>
-            <p class="dash-tile__title">商品頁</p>
-            <p class="dash-tile__meta">課程 12345 · USD · 完整 product 欄位</p>
-          </a>
-          <a class="dash-tile" href="category.html">
-            <p class="dash-tile__label">Page · category</p>
-            <p class="dash-tile__title">分類／列表</p>
-            <p class="dash-tile__meta">breadcrumb 範本 · TWD · listing_page_view</p>
-          </a>
-          <a class="dash-tile" href="cart.html">
-            <p class="dash-tile__label">Cart</p>
-            <p class="dash-tile__title">購物車</p>
-            <p class="dash-tile__meta">total 95.2 TWD · lineItem 與商品同步</p>
-          </a>
-          <a class="dash-tile" href="checkout.html">
-            <p class="dash-tile__label">Checkout</p>
-            <p class="dash-tile__title">結帳</p>
-            <p class="dash-tile__meta">other.custom（checkout／payment／1280）→ init</p>
-          </a>
-          <a class="dash-tile" href="confirmation.html">
-            <p class="dash-tile__label">Purchase</p>
-            <p class="dash-tile__title">訂單完成</p>
-            <p class="dash-tile__meta">xyz123456 · USD · purchase 完整 items[]</p>
-          </a>
-        </div>
-      </section>
-
       <div class="card">
         <h2>精靈驗測對照（Integration Element Status）</h2>
         <p class="meta" style="margin-bottom: 0.75rem">
-          各頁 <code>&lt;head&gt;</code> 皆載入
+          下列順序對應精靈測試步驟 <strong>1 → 10</strong>。各頁
+          <code>&lt;head&gt;</code> 皆載入
           <code>assets/js/insider-page-queue.js</code>（在
-          <code>ins.js</code> 之前），會自動依網址推送下列佇列（再送
-          <code>init</code>）：
+          <code>ins.js</code> 之前）；結帳頁例外，僅送
+          <code>other</code> → <code>init</code>。
         </p>
         <table>
           <thead>
             <tr>
-              <th>項目</th>
+              <th>測試項目（精靈順序）</th>
               <th>測試頁面</th>
               <th>佇列重點</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>1. Page Events and Types</td>
+              <td>1. Test Home Page Integration</td>
+              <td><a href="index.html">首頁</a></td>
               <td>
-                <a href="index.html">首頁</a>、其餘頁之頁型事件；
-                <a href="checkout.html">結帳</a>：<code>other</code>（<code>custom</code>）→
+                匿名 <code>user</code> → <code>currency: TWD</code> → <code>home</code>（<code>custom.demo_page</code>）→
                 <code>init</code>
               </td>
-              <td><code>home</code> / <code>category</code> / <code>product</code> / <code>cart</code> / <code>purchase</code> + <code>init</code></td>
             </tr>
             <tr>
-              <td>2. User Attributes</td>
+              <td>2. Test Category Page Integration</td>
+              <td><a href="category.html">分類頁</a></td>
               <td>
-                <a href="login-complete.html">模擬登入完成頁</a>
-              </td>
-              <td>
-                完整 <code>user</code>（範本欄位：uuid、gender、birthday、has_transacted、transaction_count、gdpr、name、surname、username、email、各
-                optin、language、returning、static_segment_id、age）；其餘頁為匿名
-                <code>user</code>（<code>uuid</code>、<code>birthday</code>、<code>language</code>、<code>gdpr_optin</code>）
+                匿名 <code>user</code> → <code>currency: TWD</code> →
+                <code>category</code>（<code>breadcrumb</code>）→ <code>init</code>
               </td>
             </tr>
             <tr>
-              <td>3. Product Page Events</td>
+              <td>3. Test Product Page Integration</td>
               <td><a href="product.html">商品頁</a></td>
               <td>
-                <code>product</code>（範本欄位含 taxonomy、in_stock、locale、tags、omnibus_* 等）→
+                匿名 <code>user</code> → <code>product</code>（完整範本欄位）→
                 <code>currency: USD</code> → <code>init</code>
               </td>
             </tr>
             <tr>
-              <td>3b. Page data · Category</td>
-              <td><a href="category.html">分類頁</a></td>
+              <td>4. Test Cart Page Integration</td>
+              <td><a href="cart.html">購物車</a></td>
               <td>
                 匿名 <code>user</code> → <code>currency: TWD</code> →
-                <code>category</code>（必填 <code>breadcrumb</code> 字串陣列，與文件範例相同）→
-                <code>init</code>
+                <code>cart</code>（<code>total</code>、<code>items[]</code>）→ <code>init</code>
               </td>
             </tr>
             <tr>
-              <td>4. Cart Page Events</td>
-              <td><a href="cart.html">購物車</a></td>
-              <td><code>type: &apos;cart&apos;</code>（total、items[]）</td>
-            </tr>
-            <tr>
-              <td>4b. Checkout Page Event</td>
+              <td>5. Test Checkout Page Integration</td>
               <td><a href="checkout.html">結帳</a></td>
               <td>
-                <code>other</code>（<code>value.custom.page_name</code>、<code>checkout_step</code>、<code>cart_total</code>）→
+                <code>other</code>（<code>value.custom</code>：<code>page_name</code>、<code>checkout_step</code>、<code>cart_total</code>）→
                 <code>init</code>（不送 <code>user</code>／<code>currency</code>）
               </td>
             </tr>
             <tr>
-              <td>5. Confirmation Page Events</td>
+              <td>6. Test Confirmation Page</td>
               <td><a href="confirmation.html">完成頁</a></td>
               <td>
-                <code>purchase</code>（order_id、total、完整
-                <code>items[]</code>）→ <code>currency: USD</code> →
-                <code>init</code>
+                匿名 <code>user</code> → <code>purchase</code>（<code>order_id</code>、<code>total</code>、完整
+                <code>items[]</code>）→ <code>currency: USD</code> → <code>init</code>
+              </td>
+            </tr>
+            <tr>
+              <td>7. Test User Events</td>
+              <td><a href="login-complete.html">模擬登入完成</a></td>
+              <td>
+                完整 <code>user</code>（uuid、gender、birthday、name、surname、email、phone、各 optin 等）→
+                <code>currency: TWD</code> → <code>other</code>（模擬登入完成）→ <code>init</code>
+              </td>
+            </tr>
+            <tr>
+              <td>8. Test Product Events</td>
+              <td><a href="product.html">商品頁</a></td>
+              <td>
+                <code>type: &apos;product&apos;</code> 與 <code>currency: USD</code>（與列 3 相同頁面與佇列）
+              </td>
+            </tr>
+            <tr>
+              <td>9. Test Cart Events</td>
+              <td><a href="cart.html">購物車</a></td>
+              <td>
+                <code>type: &apos;cart&apos;</code>（與列 4 相同頁面與佇列）
+              </td>
+            </tr>
+            <tr>
+              <td>10. Test Confirmation Events</td>
+              <td><a href="confirmation.html">完成頁</a></td>
+              <td>
+                <code>type: &apos;purchase&apos;</code>（與列 6 相同頁面與佇列）
               </td>
             </tr>
           </tbody>
@@ -322,6 +283,7 @@
           </div>
         </div>
       </section>
+    </div>
     </main>
     <footer class="site-footer">
       <p>本機預覽：在專案根目錄執行靜態伺服器後開啟首頁即可。</p>

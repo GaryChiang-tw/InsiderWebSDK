@@ -72,7 +72,7 @@ a:hover {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -87,20 +87,97 @@ a:hover {
   text-decoration: none;
 }
 
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-}
-
-nav a {
-  font-size: 0.95rem;
-}
-
 main {
   max-width: 960px;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 3rem;
+}
+
+main.layout-wizard {
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: minmax(220px, 270px) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.layout-wizard__main {
+  min-width: 0;
+}
+
+.wizard-menu {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 0.75rem;
+  background: linear-gradient(180deg, #fafbff 0%, var(--surface) 100%);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  position: sticky;
+  top: 3.35rem;
+}
+
+.wizard-menu__heading {
+  margin: 0 0 0.25rem;
+  padding: 0 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.wizard-menu__sub {
+  margin: 0 0 0.75rem;
+  padding: 0 0.45rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.wizard-menu__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wizard-menu__list li {
+  margin: 0;
+  border-top: 1px solid #f1f5f9;
+}
+
+.wizard-menu__list li:first-child {
+  border-top: none;
+}
+
+.wizard-menu__link {
+  display: block;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.38;
+  color: #4338ca;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.12s, color 0.12s;
+}
+
+.wizard-menu__link:hover {
+  background: #eef2ff;
+  color: #312e81;
+  text-decoration: none;
+}
+
+.wizard-menu__link[aria-current="page"] {
+  background: linear-gradient(90deg, #eef2ff, #f8fafc);
+  color: #1e1b4b;
+  box-shadow: inset 3px 0 0 0 #6366f1;
+}
+
+@media (max-width: 820px) {
+  main.layout-wizard {
+    grid-template-columns: 1fr;
+  }
+
+  .wizard-menu {
+    position: static;
+  }
 }
 
 h1 {
@@ -174,7 +251,7 @@ th {
 }
 
 .site-footer {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.25rem 2rem;
   font-size: 0.85rem;
